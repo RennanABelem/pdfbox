@@ -1,0 +1,336 @@
+{
+	"font-size": "10",
+	"lines": [
+		{
+			"type": "column",
+			"font": "DejaVuSans-Bold",
+			"text-type": "left",
+			"font-size": "16",
+			"text-value": "Plano de Cuidado Terapêutico"
+		},
+		{
+			"type": "blank"
+		},
+		{
+			"type": "column",
+			"font": "DejaVuSans",
+			"text-type": "left",
+			"text-value": "Ao hospital,"
+		},
+		{
+			"type": "column",
+			"font": "DejaVuSans",
+			"text-type": "left",
+			"text-value": "Solicito para Rennan Belem"
+		},
+		{
+			"type": "blank"
+		},
+		{
+			"type": "column",
+			"font": "DejaVuSans",
+			"text-type": "Right",
+			"text-value": "Joao da Silva"
+		},
+		{
+			"type": "column",
+			"font": "DejaVuSans",
+			"text-type": "Right",
+			"text-value": "CRM-xxxxxxxxx"
+		},
+		{
+			"type": "blank"
+		},
+		{
+			"type": "column",
+			"font": "DejaVuSans-Bold",
+			"text-type": "left",
+			"text-value": "Beneficiário",
+			"font-size": "14"
+		},
+		{
+			"type": "multi-column",
+			"fields": [
+				{
+					"type": "column",
+					"font": "DejaVuSans-Bold",
+					"text-value": "Nome:",
+					"axis-x": "0"
+				},
+				{
+					"type": "column",
+					"font": "DejaVuSans",
+					"text-value": "Rennan Belem",
+					"axis-x": "40"
+				},
+				{
+					"type": "column",
+					"font": "DejaVuSans-Bold",
+					"text-value": "Produto - Carteirinha:",
+					"text-type": "left",
+					"axis-x": "252"
+				},
+				{
+					"type": "column",
+					"font": "DejaVuSans",
+					"text-value": "55544455544455544455",
+					"text-type": "left",
+					"axis-x": "380"
+				}
+			]
+		},
+		{
+			"type": "blank"
+		},
+		{
+			"type": "blank"
+		},
+		{
+			"type": "column",
+			"font": "DejaVuSans-Bold",
+			"text-type": "left",
+			"text-value": "PROFISSIONAL SOLICITANTE",
+			"font-size": "14"
+		},
+		{
+			"type": "multi-column",
+			"fields": [
+				{
+					"type": "column",
+					"font": "DejaVuSans-Bold",
+					"text-value": "Nome:",
+					"axis-x": "0"
+				},
+				{
+					"type": "column",
+					"font": "DejaVuSans",
+					"text-value": "Joao da Silva",
+					"axis-x": "40"
+				}
+			]
+		},
+		{
+			"type": "multi-column",
+			"fields": [
+				{
+					"type": "column",
+					"font": "DejaVuSans-Bold",
+					"text-value": "Conselho:",
+					"text-type": "left",
+					"axis-x": "0"
+				},
+				{
+					"type": "column",
+					"font": "DejaVuSans",
+					"text-value": "CRM-xxxxxxxxx",
+					"text-type": "left",
+					"axis-x": "59"
+				}
+			]
+		},
+		{
+			"type": "blank"
+		},
+		{
+			"type": "blank"
+		},
+		{
+			"type": "column",
+			"font": "DejaVuSans-Bold",
+			"text-type": "left",
+			"text-value": "PLANO DE CUIDADO TERAPÊUTICO",
+			"font-size": "14"
+		},
+		{
+			"type": "multi-column",
+			"fields": [
+				{
+					"type": "column",
+					"font": "DejaVuSans-Bold",
+					"text-value": "TUSS Principal:",
+					"text-type": "left",
+					"axis-x": "0"
+				},
+				{
+					"type": "column",
+					"font": "DejaVuSans",
+					"text-value": "40801012",
+					"text-type": "left",
+					"axis-x": "88"
+				}
+			]
+		},
+		{
+			"type": "multi-column",
+			"fields": [
+				{
+					"type": "column",
+					"font": "DejaVuSans-Bold",
+					"text-value": "Outro(s) TUSS:",
+					"text-type": "left",
+					"axis-x": "0"
+				},
+				{
+					"type": "column",
+					"font": "DejaVuSans",
+					"text-value": "Nenhum",
+					"text-type": "left",
+					"axis-x": "87"
+				}
+			]
+		},
+		{
+			"type": "multi-column",
+			"fields": [
+				{
+					"type": "column",
+					"font": "DejaVuSans-Bold",
+					"text-value": "Pacote Procedimento:",
+					"text-type": "left",
+					"axis-x": "0"
+				},
+				{
+					"type": "column",
+					"font": "DejaVuSans",
+					"text-value": "Consulta médica especializada",
+					"text-type": "left",
+					"axis-x": "127"
+				}
+			]
+		},
+		{
+			"type": "multi-column",
+			"fields": [
+				{
+					"type": "column",
+					"font": "DejaVuSans-Bold",
+					"text-value": "Pacote Hospitalar:",
+					"text-type": "left",
+					"axis-x": "0"
+				},
+				{
+					"type": "column",
+					"font": "DejaVuSans",
+					"text-value": "Não",
+					"text-type": "left",
+					"axis-x": "106"
+				}
+			]
+		},
+		{
+			"type": "blank"
+		},
+		{
+			"type": "multi-column",
+			"fields": [
+				{
+					"type": "column",
+					"font": "DejaVuSans-Bold",
+					"text-value": "Internação em UTI:",
+					"text-type": "left",
+					"axis-x": "0"
+				},
+				{
+					"type": "column",
+					"font": "DejaVuSans",
+					"text-value": "Texto sobre a internação...",
+					"text-type": "left",
+					"axis-x": "110"
+				}
+			]
+		},
+			{
+			"type": "multi-column",
+			"fields": [
+				{
+					"type": "column",
+					"font": "DejaVuSans-Bold",
+					"text-value": "CID Principal:",
+					"text-type": "left",
+					"axis-x": "0"
+				},
+				{
+					"type": "column",
+					"font": "DejaVuSans",
+					"text-value": "M54.2 - Cervical",
+					"text-type": "left",
+					"axis-x": "78"
+				}
+			]
+		},
+		{
+			"type": "multi-column",
+			"fields": [
+				{
+					"type": "column",
+					"font": "DejaVuSans-Bold",
+					"text-value": "Nível(is) a ser(em) abordado(s):",
+					"text-type": "left",
+					"axis-x": "0"
+				},
+				{
+					"type": "column",
+					"font": "DejaVuSans",
+					"text-value": "3",
+					"text-type": "left",
+					"axis-x": "184"
+				}
+			]
+		},
+	
+		{
+			"type": "multi-column",
+			"fields": [
+				{
+					"type": "column",
+					"font": "DejaVuSans-Bold",
+					"text-value": "Região de abordagem cirúrgica:",
+					"text-type": "left",
+					"axis-x": "0"
+				},
+				{
+					"type": "column",
+					"font": "DejaVuSans",
+					"text-value": "Texto sobre a regiao de abordagem cirúrgica.",
+					"text-type": "left",
+					"axis-x": "185"
+				}
+			]
+		},
+		{
+			"type": "multi-column",
+			"fields": [
+				{
+					"type": "column",
+					"font": "DejaVuSans-Bold",
+					"text-value": "Tempo de diagnóstico:",
+					"text-type": "left",
+					"axis-x": "0"
+				},
+				{
+					"type": "column",
+					"font": "DejaVuSans",
+					"text-value": "Texto sobre o tempo de diagnóstico.",
+					"text-type": "left",
+					"axis-x": "132"
+				}
+			]
+		},
+		{
+			"type": "blank"
+		},
+		{
+			"type": "column",
+			"font": "DejaVuSans-Bold",
+			"text-type": "left",
+			"font-size": "12",
+			"text-value": "Justificativa:"
+		},
+		{
+			"type": "column",
+			"font": "DejaVuSans",
+			"text-type": "left",
+			"text-value": "Paciente apresenta dor cervical persistente, blablablabla, apresenta dor cervical persistente, blablablabla,apresenta dor cervical persistente, blablablabla,apresenta dor cervical persistente, blablablabla,apresenta dor cervical persistente, blablablabla. Possivel intervenção terapêutica."
+		}
+	]
+}
