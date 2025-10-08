@@ -1,4 +1,12 @@
 C:\Users\renna\Downloads\demoCarePlan\demoCarePlan\src\main\java\com\example\demoCarePlan\controller\PdfController.java
 C:\Users\renna\Downloads\demoCarePlan\demoCarePlan\src\main\java\com\example\demoCarePlan\DemoCarePlanApplication.java
-C:\Users\renna\Downloads\demoCarePlan\demoCarePlan\src\main\java\com\example\demoCarePlan\dto\CarePlanDto.java
+C:\Users\renna\Downloads\demoCarePlan\demoCarePlan\src\main\java\com\example\demoCarePlan\service\component\MultiColumnRenderer.java
+C:\Users\renna\Downloads\demoCarePlan\demoCarePlan\src\main\java\com\example\demoCarePlan\service\component\PdfConstants.java
+C:\Users\renna\Downloads\demoCarePlan\demoCarePlan\src\main\java\com\example\demoCarePlan\service\component\SignatureRenderer.java
+C:\Users\renna\Downloads\demoCarePlan\demoCarePlan\src\main\java\com\example\demoCarePlan\service\component\SingleColumnRenderer.java
+C:\Users\renna\Downloads\demoCarePlan\demoCarePlan\src\main\java\com\example\demoCarePlan\service\FontManager.java
+C:\Users\renna\Downloads\demoCarePlan\demoCarePlan\src\main\java\com\example\demoCarePlan\service\JsonPdfRenderer.java
+C:\Users\renna\Downloads\demoCarePlan\demoCarePlan\src\main\java\com\example\demoCarePlan\service\PdfDocumentBuilder.java
+C:\Users\renna\Downloads\demoCarePlan\demoCarePlan\src\main\java\com\example\demoCarePlan\service\PdfDrawHelper.java
 C:\Users\renna\Downloads\demoCarePlan\demoCarePlan\src\main\java\com\example\demoCarePlan\service\PdfService.java
+C:\Users\renna\Downloads\demoCarePlan\demoCarePlan\src\main\java\com\example\demoCarePlan\service\TextWrapper.java

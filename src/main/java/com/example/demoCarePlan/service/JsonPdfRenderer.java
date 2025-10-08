@@ -4,8 +4,10 @@ import java.io.ByteArrayOutputStream;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 
+import com.example.demoCarePlan.service.component.ListRenderer;
 import com.example.demoCarePlan.service.component.MultiColumnRenderer;
 import com.example.demoCarePlan.service.component.PdfConstants;
+import com.example.demoCarePlan.service.component.SignatureRenderer;
 import com.example.demoCarePlan.service.component.SingleColumnRenderer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
@@ -26,6 +28,8 @@ public class JsonPdfRenderer {
 
 			SingleColumnRenderer singleRenderer = new SingleColumnRenderer(builder, fontManager, globalFontSize);
 			MultiColumnRenderer multiRenderer = new MultiColumnRenderer(builder, fontManager, globalFontSize);
+			SignatureRenderer signatureRenderer = new SignatureRenderer(builder, fontManager, globalFontSize);
+			ListRenderer listRenderer = new ListRenderer(builder, fontManager, globalFontSize);
 
 			for (JsonNode line : lines) {
 				String type = line.path("type").asText("");
@@ -38,6 +42,16 @@ public class JsonPdfRenderer {
 
 				if ("multi-column".equalsIgnoreCase(type)) {
 					multiRenderer.render(line);
+					continue;
+				}
+				
+				if ("signature".equalsIgnoreCase(type)) {
+				    signatureRenderer.render(line);
+				    continue;
+				}
+				
+				if ("list".equalsIgnoreCase(type) || "multi-column-list".equalsIgnoreCase(type)) {
+					listRenderer.render(line, root);
 					continue;
 				}
 

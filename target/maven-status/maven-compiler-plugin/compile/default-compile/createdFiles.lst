@@ -1,4 +1,13 @@
-com\example\demoCarePlan\controller\PdfController.class
-com\example\demoCarePlan\dto\CarePlanDto.class
+com\example\demoCarePlan\service\JsonPdfRenderer.class
+com\example\demoCarePlan\service\component\SignatureRenderer.class
 com\example\demoCarePlan\service\PdfService.class
+com\example\demoCarePlan\service\component\PdfConstants.class
+com\example\demoCarePlan\service\PdfDrawHelper$Alignment.class
+com\example\demoCarePlan\service\component\MultiColumnRenderer.class
+com\example\demoCarePlan\service\TextWrapper.class
+com\example\demoCarePlan\service\PdfDrawHelper.class
 com\example\demoCarePlan\DemoCarePlanApplication.class
+com\example\demoCarePlan\controller\PdfController.class
+com\example\demoCarePlan\service\component\SingleColumnRenderer.class
+com\example\demoCarePlan\service\PdfDocumentBuilder.class
+com\example\demoCarePlan\service\FontManager.class

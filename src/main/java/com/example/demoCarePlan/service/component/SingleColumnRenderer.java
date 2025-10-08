@@ -33,7 +33,7 @@ public class SingleColumnRenderer {
 
 		for (String row : wrapped) {
 			builder.ensureSpace(PdfConstants.BOTTOM_MARGIN);
-			PdfDrawHelper.drawTextLine(builder.getContentStream(), row, PdfDocumentBuilder.DEFAULT_MARGIN_LEFT + 2f,
+			PdfDrawHelper.drawTextLine(builder.getContentStream(), row, PdfDocumentBuilder.DEFAULT_MARGIN_LEFT,
 					builder.getCursorY(), font, fontSize, node.path("text-type").asText("left"), available);
 			builder.moveCursorBy(-PdfConstants.DEFAULT_LEADING);
 		}

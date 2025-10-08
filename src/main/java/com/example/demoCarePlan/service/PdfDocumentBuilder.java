@@ -17,6 +17,14 @@ public class PdfDocumentBuilder {
 	private PDPageContentStream cs;
 	private float cursorY;
 
+	public PDDocument getDocument() {
+	    return this.doc;
+	}
+
+	public PDPage getCurrentPage() {
+	    return this.page;
+	}
+
 	public PdfDocumentBuilder(PDDocument doc) throws Exception {
 		this.doc = doc;
 		addNewPage();

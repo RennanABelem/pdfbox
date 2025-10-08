@@ -6,7 +6,7 @@
 			"font": "DejaVuSans-Bold",
 			"text-type": "left",
 			"font-size": "16",
-			"text-value": "Plano de Cuidado Terapêutico"
+			"text-value": "${type}"
 		},
 		{
 			"type": "blank"
@@ -21,7 +21,7 @@
 			"type": "column",
 			"font": "DejaVuSans",
 			"text-type": "left",
-			"text-value": "Solicito para Rennan Belem"
+			"text-value": "${titulo/beneficiary.name}"
 		},
 		{
 			"type": "blank"
@@ -30,13 +30,13 @@
 			"type": "column",
 			"font": "DejaVuSans",
 			"text-type": "Right",
-			"text-value": "Joao da Silva"
+			"text-value": "${requester.name}"
 		},
 		{
 			"type": "column",
 			"font": "DejaVuSans",
 			"text-type": "Right",
-			"text-value": "CRM-xxxxxxxxx"
+			"text-value": "${requester.crm/state}"
 		},
 		{
 			"type": "blank"
@@ -46,7 +46,7 @@
 			"font": "DejaVuSans-Bold",
 			"text-type": "left",
 			"text-value": "Beneficiário",
-			"font-size": "14"
+			"font-size": "12"
 		},
 		{
 			"type": "multi-column",
@@ -60,7 +60,7 @@
 				{
 					"type": "column",
 					"font": "DejaVuSans",
-					"text-value": "Rennan Belem",
+					"text-value": "${beneficiary.name}",
 					"axis-x": "40"
 				},
 				{
@@ -73,7 +73,7 @@
 				{
 					"type": "column",
 					"font": "DejaVuSans",
-					"text-value": "55544455544455544455",
+					"text-value": "${beneficiary.code}",
 					"text-type": "left",
 					"axis-x": "380"
 				}
@@ -90,7 +90,7 @@
 			"font": "DejaVuSans-Bold",
 			"text-type": "left",
 			"text-value": "PROFISSIONAL SOLICITANTE",
-			"font-size": "14"
+			"font-size": "12"
 		},
 		{
 			"type": "multi-column",
@@ -104,7 +104,7 @@
 				{
 					"type": "column",
 					"font": "DejaVuSans",
-					"text-value": "Joao da Silva",
+					"text-value": "${requester.name}",
 					"axis-x": "40"
 				}
 			]
@@ -122,7 +122,7 @@
 				{
 					"type": "column",
 					"font": "DejaVuSans",
-					"text-value": "CRM-xxxxxxxxx",
+					"text-value": "${requester.crm/state}",
 					"text-type": "left",
 					"axis-x": "59"
 				}
@@ -139,7 +139,7 @@
 			"font": "DejaVuSans-Bold",
 			"text-type": "left",
 			"text-value": "PLANO DE CUIDADO TERAPÊUTICO",
-			"font-size": "14"
+			"font-size": "12"
 		},
 		{
 			"type": "multi-column",
@@ -154,7 +154,7 @@
 				{
 					"type": "column",
 					"font": "DejaVuSans",
-					"text-value": "40801012",
+					"text-value": "xxxxxx",
 					"text-type": "left",
 					"axis-x": "88"
 				}
@@ -169,13 +169,19 @@
 					"text-value": "Outro(s) TUSS:",
 					"text-type": "left",
 					"axis-x": "0"
-				},
+				}
+			]
+		},
+		{
+			"type": "list",
+			"fields": [
 				{
 					"type": "column",
 					"font": "DejaVuSans",
-					"text-value": "Nenhum",
-					"text-type": "left",
-					"axis-x": "87"
+					"axis-x": "0",
+					"list": {
+						"items": "${listaExames}"
+					}
 				}
 			]
 		},
@@ -239,7 +245,7 @@
 				}
 			]
 		},
-			{
+		{
 			"type": "multi-column",
 			"fields": [
 				{
@@ -277,7 +283,6 @@
 				}
 			]
 		},
-	
 		{
 			"type": "multi-column",
 			"fields": [
@@ -330,7 +335,18 @@
 			"type": "column",
 			"font": "DejaVuSans",
 			"text-type": "left",
-			"text-value": "Paciente apresenta dor cervical persistente, blablablabla, apresenta dor cervical persistente, blablablabla,apresenta dor cervical persistente, blablablabla,apresenta dor cervical persistente, blablablabla,apresenta dor cervical persistente, blablablabla. Possivel intervenção terapêutica."
+			"text-value": "Paciente dor cervical persistente.."
+		},
+		{
+			"type": "blank"
+		},
+		{
+			"type": "signature",
+			"text": "Assinatura e carimbo do profissional responsável",
+			"width": 245,
+			"font": "DejaVuSans",
+			"font-size": 8,
+			"axis-x": 45
 		}
 	]
 }
