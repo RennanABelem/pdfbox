@@ -2,20 +2,18 @@ package com.example.demoCarePlan.service.component;
 
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDFont;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
-import com.example.demoCarePlan.service.FontManager;
 import com.example.demoCarePlan.service.PdfDocumentBuilder;
 import com.fasterxml.jackson.databind.JsonNode;
 
 public class SignatureRenderer {
 
     private final PdfDocumentBuilder builder;
-    private final FontManager fontManager;
     private final float globalFontSize;
 
-    public SignatureRenderer(PdfDocumentBuilder builder, FontManager fontManager, float globalFontSize) {
+    public SignatureRenderer(PdfDocumentBuilder builder, float globalFontSize) {
         this.builder = builder;
-        this.fontManager = fontManager;
         this.globalFontSize = globalFontSize;
     }
 
@@ -25,7 +23,7 @@ public class SignatureRenderer {
 
         String text = element.has("text") ? element.get("text").asText() : "";
         float blockWidth = element.has("width") ? (float) element.get("width").asDouble() : 260f;
-        String fontName = element.has("font") ? element.get("font").asText() : "DejaVuSans";
+        String fontName = element.has("font") ? element.get("font").asText() : "Helvetica";
         float fontSize = element.has("font-size") ? (float) element.get("font-size").asDouble() : globalFontSize;
 
         float marginBottom = PdfConstants.BOTTOM_MARGIN;
@@ -38,7 +36,7 @@ public class SignatureRenderer {
 
         builder.ensureSpace(lineHeightAboveBottom + fontSize);
 
-        PDFont font = fontManager.getFont(fontName);
+        PDFont font = loadFont(fontName);
         
         cs.setLineWidth(lineThickness);
         cs.moveTo(startX, lineY);
@@ -56,4 +54,16 @@ public class SignatureRenderer {
 
         builder.moveCursorBy(- (lineHeightAboveBottom + fontSize + distanceLineToText));
     }
+    
+	private PDFont loadFont(String fontName) {
+		PDFont font;
+		if ("Helvetica".equalsIgnoreCase(fontName)) {
+		    font = PDType1Font.HELVETICA;
+		} else if ("Helvetica_Bold".equalsIgnoreCase(fontName)) {
+		    font = PDType1Font.HELVETICA_BOLD;
+		} else {
+		    font = PDType1Font.HELVETICA;
+		}
+		return font;
+	}
 }

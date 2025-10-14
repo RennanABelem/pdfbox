@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.pdfbox.pdmodel.font.PDFont;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
-import com.example.demoCarePlan.service.FontManager;
 import com.example.demoCarePlan.service.PdfDocumentBuilder;
 import com.example.demoCarePlan.service.PdfDrawHelper;
 import com.example.demoCarePlan.service.TextWrapper;
@@ -14,12 +14,10 @@ import com.fasterxml.jackson.databind.JsonNode;
 public class MultiColumnRenderer {
 
     private final PdfDocumentBuilder builder;
-    private final FontManager fontManager;
     private final float globalFontSize;
 
-    public MultiColumnRenderer(PdfDocumentBuilder builder, FontManager fontManager, float globalFontSize) {
+    public MultiColumnRenderer(PdfDocumentBuilder builder, float globalFontSize) {
         this.builder = builder;
-        this.fontManager = fontManager;
         this.globalFontSize = globalFontSize;
     }
 
@@ -53,10 +51,11 @@ public class MultiColumnRenderer {
                 fonts.add(null);
                 continue;
             }
-
-            String fontName = f.path("font").asText("DejaVuSans");
-            PDFont font = fontManager.getFont(fontName);
+            
+            String fontName = f.path("font").asText("Helvetica");
             float fontSize = parseFloatOrDefault(f.path("font-size").asText(null), globalFontSize);
+            
+            PDFont font = loadFont(fontName);
 
             float x;
             float availWidth;
@@ -105,6 +104,18 @@ public class MultiColumnRenderer {
 
         builder.ensureSpace(PdfConstants.BOTTOM_MARGIN);
     }
+
+	private PDFont loadFont(String fontName) {
+		PDFont font;
+		if ("Helvetica".equalsIgnoreCase(fontName)) {
+		    font = PDType1Font.HELVETICA;
+		} else if ("Helvetica_Bold".equalsIgnoreCase(fontName)) {
+		    font = PDType1Font.HELVETICA_BOLD;
+		} else {
+		    font = PDType1Font.HELVETICA;
+		}
+		return font;
+	}
 
     private float parseFloatOrDefault(String value, float defaultValue) {
         try {

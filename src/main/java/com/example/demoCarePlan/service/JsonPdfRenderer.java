@@ -17,7 +17,6 @@ public class JsonPdfRenderer {
 	public byte[] render(JsonNode root) throws Exception {
 		try (PDDocument doc = new PDDocument()) {
 			PdfDocumentBuilder builder = new PdfDocumentBuilder(doc);
-			FontManager fontManager = new FontManager(doc);
 
 			float globalFontSize = parseFloatOrDefault(root.path("font-size").asText(null),
 					PdfConstants.DEFAULT_FONT_SIZE);
@@ -26,10 +25,10 @@ public class JsonPdfRenderer {
 			if (!lines.isArray())
 				lines = JsonNodeFactory.instance.arrayNode();
 
-			SingleColumnRenderer singleRenderer = new SingleColumnRenderer(builder, fontManager, globalFontSize);
-			MultiColumnRenderer multiRenderer = new MultiColumnRenderer(builder, fontManager, globalFontSize);
-			SignatureRenderer signatureRenderer = new SignatureRenderer(builder, fontManager, globalFontSize);
-			ListRenderer listRenderer = new ListRenderer(builder, fontManager, globalFontSize);
+			SingleColumnRenderer singleRenderer = new SingleColumnRenderer(builder, globalFontSize);
+			MultiColumnRenderer multiRenderer = new MultiColumnRenderer(builder, globalFontSize);
+			SignatureRenderer signatureRenderer = new SignatureRenderer(builder, globalFontSize);
+			ListRenderer listRenderer = new ListRenderer(builder, globalFontSize);
 
 			for (JsonNode line : lines) {
 				String type = line.path("type").asText("");
@@ -50,7 +49,7 @@ public class JsonPdfRenderer {
 				    continue;
 				}
 				
-				if ("list".equalsIgnoreCase(type) || "multi-column-list".equalsIgnoreCase(type)) {
+				if ("list".equalsIgnoreCase(type)) {
 					listRenderer.render(line, root);
 					continue;
 				}

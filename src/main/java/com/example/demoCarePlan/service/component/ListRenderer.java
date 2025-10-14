@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.example.demoCarePlan.service.FontManager;
 import com.example.demoCarePlan.service.PdfDocumentBuilder;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
@@ -15,8 +14,8 @@ public class ListRenderer {
 
 	private final MultiColumnRenderer multiRenderer;
 
-	public ListRenderer(PdfDocumentBuilder builder, FontManager fontManager, float globalFontSize) {
-		this.multiRenderer = new MultiColumnRenderer(builder, fontManager, globalFontSize);
+	public ListRenderer(PdfDocumentBuilder builder, float globalFontSize) {
+		this.multiRenderer = new MultiColumnRenderer(builder, globalFontSize);
 	}
 
 	public void render(JsonNode line, JsonNode root) throws Exception {
@@ -69,11 +68,9 @@ public class ListRenderer {
 		if (maxItems == 0)
 			return result;
 
-		// Gera uma nova linha multi-column para cada item
 		for (int index = 0; index < maxItems; index++) {
 			ObjectNode newLine = JsonNodeFactory.instance.objectNode();
 
-			// copia propriedades básicas
 			Iterator<String> names = line.fieldNames();
 			while (names.hasNext()) {
 				String name = names.next();
@@ -82,7 +79,6 @@ public class ListRenderer {
 				}
 			}
 
-			// monta o array fields atualizado
 			ArrayNode newFields = JsonNodeFactory.instance.arrayNode();
 			for (int fIdx = 0; fIdx < fieldCount; fIdx++) {
 				JsonNode originalField = fields.get(fIdx);

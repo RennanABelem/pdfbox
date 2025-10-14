@@ -3,47 +3,60 @@
 	"lines": [
 		{
 			"type": "column",
-			"font": "DejaVuSans-Bold",
+			"font": "Helvetica_Bold",
 			"text-type": "left",
 			"font-size": "16",
-			"text-value": "${type}"
+			"text-value": "Plano de Cuidado Terapêutico"
 		},
 		{
 			"type": "blank"
 		},
 		{
 			"type": "column",
-			"font": "DejaVuSans",
+			"font": "Helvetica",
 			"text-type": "left",
 			"text-value": "Ao hospital,"
 		},
 		{
+			"type": "multi-column",
+			"fields": [
+				{
+					"type": "column",
+					"font": "Helvetica",
+					"text-value": "Solicito para ",
+					"axis-x": "0"
+				},
+				{
+					"type": "column",
+					"font": "Helvetica",
+					"text-value": "${beneficiary.name}",
+					"axis-x": "58"
+				}
+			]
+		},
+		{
+			"type": "blank"
+		},
+		{
 			"type": "column",
-			"font": "DejaVuSans",
+			"font": "Helvetica",
 			"text-type": "left",
-			"text-value": "${titulo/beneficiary.name}"
+			"text-value": "${requester.name}",
+			"axis-x": "305"
+		},
+		{
+			"type": "column",
+			"font": "Helvetica",
+			"text-type": "left",
+			"text-value": "${requester.crm}",
+			"axis-x": "305"
 		},
 		{
 			"type": "blank"
 		},
 		{
 			"type": "column",
-			"font": "DejaVuSans",
-			"text-type": "Right",
-			"text-value": "${requester.name}"
-		},
-		{
-			"type": "column",
-			"font": "DejaVuSans",
-			"text-type": "Right",
-			"text-value": "${requester.crm/state}"
-		},
-		{
-			"type": "blank"
-		},
-		{
-			"type": "column",
-			"font": "DejaVuSans-Bold",
+			"font": "Helvetica_Bold",
 			"text-type": "left",
 			"text-value": "Beneficiário",
 			"font-size": "12"
@@ -53,29 +66,29 @@
 			"fields": [
 				{
 					"type": "column",
-					"font": "DejaVuSans-Bold",
+					"font": "Helvetica_Bold",
 					"text-value": "Nome:",
 					"axis-x": "0"
 				},
 				{
 					"type": "column",
-					"font": "DejaVuSans",
+					"font": "Helvetica",
 					"text-value": "${beneficiary.name}",
-					"axis-x": "40"
+					"axis-x": "32"
 				},
 				{
 					"type": "column",
-					"font": "DejaVuSans-Bold",
+					"font": "Helvetica_Bold",
 					"text-value": "Produto - Carteirinha:",
 					"text-type": "left",
-					"axis-x": "252"
+					"axis-x": "280"
 				},
 				{
 					"type": "column",
-					"font": "DejaVuSans",
+					"font": "Helvetica",
 					"text-value": "${beneficiary.code}",
 					"text-type": "left",
-					"axis-x": "380"
+					"axis-x": "386"
 				}
 			]
 		},
@@ -87,7 +100,7 @@
 		},
 		{
 			"type": "column",
-			"font": "DejaVuSans-Bold",
+			"font": "Helvetica_Bold",
 			"text-type": "left",
 			"text-value": "PROFISSIONAL SOLICITANTE",
 			"font-size": "12"
@@ -97,15 +110,15 @@
 			"fields": [
 				{
 					"type": "column",
-					"font": "DejaVuSans-Bold",
+					"font": "Helvetica_Bold",
 					"text-value": "Nome:",
 					"axis-x": "0"
 				},
 				{
 					"type": "column",
-					"font": "DejaVuSans",
+					"font": "Helvetica",
 					"text-value": "${requester.name}",
-					"axis-x": "40"
+					"axis-x": "34"
 				}
 			]
 		},
@@ -114,17 +127,17 @@
 			"fields": [
 				{
 					"type": "column",
-					"font": "DejaVuSans-Bold",
+					"font": "Helvetica_Bold",
 					"text-value": "Conselho:",
 					"text-type": "left",
 					"axis-x": "0"
 				},
 				{
 					"type": "column",
-					"font": "DejaVuSans",
-					"text-value": "${requester.crm/state}",
+					"font": "Helvetica",
+					"text-value": "${requester.crm}",
 					"text-type": "left",
-					"axis-x": "59"
+					"axis-x": "50"
 				}
 			]
 		},
@@ -136,7 +149,7 @@
 		},
 		{
 			"type": "column",
-			"font": "DejaVuSans-Bold",
+			"font": "Helvetica_Bold",
 			"text-type": "left",
 			"text-value": "PLANO DE CUIDADO TERAPÊUTICO",
 			"font-size": "12"
@@ -146,17 +159,17 @@
 			"fields": [
 				{
 					"type": "column",
-					"font": "DejaVuSans-Bold",
+					"font": "Helvetica_Bold",
 					"text-value": "TUSS Principal:",
 					"text-type": "left",
 					"axis-x": "0"
 				},
 				{
 					"type": "column",
-					"font": "DejaVuSans",
-					"text-value": "xxxxxx",
+					"font": "Helvetica",
+					"text-value": "${procedure.tuss}",
 					"text-type": "left",
-					"axis-x": "88"
+					"axis-x": "77"
 				}
 			]
 		},
@@ -165,7 +178,7 @@
 			"fields": [
 				{
 					"type": "column",
-					"font": "DejaVuSans-Bold",
+					"font": "Helvetica_Bold",
 					"text-value": "Outro(s) TUSS:",
 					"text-type": "left",
 					"axis-x": "0"
@@ -177,10 +190,10 @@
 			"fields": [
 				{
 					"type": "column",
-					"font": "DejaVuSans",
+					"font": "Helvetica",
 					"axis-x": "0",
 					"list": {
-						"items": "${listaExames}"
+						"items": "${procedure.additional_packages}"
 					}
 				}
 			]
@@ -190,17 +203,17 @@
 			"fields": [
 				{
 					"type": "column",
-					"font": "DejaVuSans-Bold",
+					"font": "Helvetica_Bold",
 					"text-value": "Pacote Procedimento:",
 					"text-type": "left",
 					"axis-x": "0"
 				},
 				{
 					"type": "column",
-					"font": "DejaVuSans",
-					"text-value": "Consulta médica especializada",
+					"font": "Helvetica",
+					"text-value": "${procedure.procedure_package}",
 					"text-type": "left",
-					"axis-x": "127"
+					"axis-x": "108"
 				}
 			]
 		},
@@ -209,17 +222,17 @@
 			"fields": [
 				{
 					"type": "column",
-					"font": "DejaVuSans-Bold",
+					"font": "Helvetica_Bold",
 					"text-value": "Pacote Hospitalar:",
 					"text-type": "left",
 					"axis-x": "0"
 				},
 				{
 					"type": "column",
-					"font": "DejaVuSans",
-					"text-value": "Não",
+					"font": "Helvetica",
+					"text-value": "${procedure.hospital_package}",
 					"text-type": "left",
-					"axis-x": "106"
+					"axis-x": "90"
 				}
 			]
 		},
@@ -231,17 +244,17 @@
 			"fields": [
 				{
 					"type": "column",
-					"font": "DejaVuSans-Bold",
+					"font": "Helvetica_Bold",
 					"text-value": "Internação em UTI:",
 					"text-type": "left",
 					"axis-x": "0"
 				},
 				{
 					"type": "column",
-					"font": "DejaVuSans",
-					"text-value": "Texto sobre a internação...",
+					"font": "Helvetica",
+					"text-value": "${hospital_admission.uti_reservation}",
 					"text-type": "left",
-					"axis-x": "110"
+					"axis-x": "92"
 				}
 			]
 		},
@@ -250,17 +263,17 @@
 			"fields": [
 				{
 					"type": "column",
-					"font": "DejaVuSans-Bold",
+					"font": "Helvetica_Bold",
 					"text-value": "CID Principal:",
 					"text-type": "left",
 					"axis-x": "0"
 				},
 				{
 					"type": "column",
-					"font": "DejaVuSans",
-					"text-value": "M54.2 - Cervical",
+					"font": "Helvetica",
+					"text-value": "${diagnosis.cid}",
 					"text-type": "left",
-					"axis-x": "78"
+					"axis-x": "68"
 				}
 			]
 		},
@@ -269,17 +282,17 @@
 			"fields": [
 				{
 					"type": "column",
-					"font": "DejaVuSans-Bold",
+					"font": "Helvetica_Bold",
 					"text-value": "Nível(is) a ser(em) abordado(s):",
 					"text-type": "left",
 					"axis-x": "0"
 				},
 				{
 					"type": "column",
-					"font": "DejaVuSans",
-					"text-value": "3",
+					"font": "Helvetica",
+					"text-value": "${procedure.level}",
 					"text-type": "left",
-					"axis-x": "184"
+					"axis-x": "152"
 				}
 			]
 		},
@@ -288,17 +301,17 @@
 			"fields": [
 				{
 					"type": "column",
-					"font": "DejaVuSans-Bold",
+					"font": "Helvetica_Bold",
 					"text-value": "Região de abordagem cirúrgica:",
 					"text-type": "left",
 					"axis-x": "0"
 				},
 				{
 					"type": "column",
-					"font": "DejaVuSans",
-					"text-value": "Texto sobre a regiao de abordagem cirúrgica.",
+					"font": "Helvetica",
+					"text-value": "${procedure.surgery_approach}",
 					"text-type": "left",
-					"axis-x": "185"
+					"axis-x": "155"
 				}
 			]
 		},
@@ -307,17 +320,17 @@
 			"fields": [
 				{
 					"type": "column",
-					"font": "DejaVuSans-Bold",
+					"font": "Helvetica_Bold",
 					"text-value": "Tempo de diagnóstico:",
 					"text-type": "left",
 					"axis-x": "0"
 				},
 				{
 					"type": "column",
-					"font": "DejaVuSans",
-					"text-value": "Texto sobre o tempo de diagnóstico.",
+					"font": "Helvetica",
+					"text-value": "${diagnosis.diagnosis_time}",
 					"text-type": "left",
-					"axis-x": "132"
+					"axis-x": "110"
 				}
 			]
 		},
@@ -326,25 +339,22 @@
 		},
 		{
 			"type": "column",
-			"font": "DejaVuSans-Bold",
+			"font": "Helvetica_Bold",
 			"text-type": "left",
-			"font-size": "12",
+			"font-size": "10",
 			"text-value": "Justificativa:"
 		},
 		{
 			"type": "column",
-			"font": "DejaVuSans",
+			"font": "Helvetica",
 			"text-type": "left",
-			"text-value": "Paciente dor cervical persistente.."
-		},
-		{
-			"type": "blank"
+			"text-value": "${diagnosis.clinical_justification}"
 		},
 		{
 			"type": "signature",
 			"text": "Assinatura e carimbo do profissional responsável",
 			"width": 245,
-			"font": "DejaVuSans",
+			"font": "Helvetica",
 			"font-size": 8,
 			"axis-x": 45
 		}

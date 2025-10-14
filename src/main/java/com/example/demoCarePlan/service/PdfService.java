@@ -22,12 +22,12 @@ public class PdfService {
     private final ObjectMapper mapper = new ObjectMapper();
     private final JsonPdfRenderer renderer = new JsonPdfRenderer();
 
-    public byte[] generateFromTemplateResource(String resourcePath, Map<String, Object> variables, String outputFileName) throws Exception {
+    public byte[] generateFromTemplateResource(String resourcePath, String outputFileName) throws Exception {
         try (InputStream templateIS = new ClassPathResource(resourcePath).getInputStream()) {
             JsonNode templateJson = mapper.readTree(templateIS);
-
-            JsonNode filledJson = replacePlaceholders(templateJson, variables);
-
+            
+            JsonNode filledJson = replacePlaceholders(templateJson, returnDinamicMap(templateJson));
+            
             byte[] pdfBytes = renderer.render(filledJson);
 
             Path outputPath = Paths.get(outputFileName);
@@ -37,6 +37,47 @@ public class PdfService {
             return pdfBytes;
         }
     }
+
+	private Map<String, Object> returnDinamicMap(JsonNode templateJson) {
+		
+		var template = templateJson.toString();
+		var payload = "{\r\n"
+				+ "  \"beneficiary\": {\r\n"
+				+ "    \"name\": \"Rennan Belem\",\r\n"
+				+ "    \"code\": \"545xx3212xx1321xxx20\"\r\n"
+				+ "  },\r\n"
+				+ "  \"requester\": {\r\n"
+				+ "    \"name\": \"Dr. João Amoeba\",\r\n"
+				+ "    \"crm\": \"CRM 123456\"\r\n"
+				+ "  },\r\n"
+				+ "  \"procedure\": {\r\n"
+				+ "    \"tuss\": \"12345678\",\r\n"
+				+ "    \"additional_packages\": [\r\n"
+				+ "      \"1 - 40303489 - TUSS_TEXTO_1\",\r\n"
+				+ "      \"2 - 40303490 - TUSS_TEXTO_2\",\r\n"
+				+ "      \"3 - 40303491 - TUSS_TEXTO_4\"\r\n"
+				+ "    ],\r\n"
+				+ "	\"procedure_package\":\"texto do procedure package\",\r\n"
+				+ "	\"hospital_package\":\"texto do hospital_package\",\r\n"
+				+ "	\"level\":\"3\",\r\n"
+				+ "	\"surgery_approach\":\"texto da surgery_approach\"\r\n"
+				+ "  },\r\n"
+				+ "  \"diagnosis\": {\r\n"
+				+ "    \"cid\":\"M54.2 - Cervica\",\r\n"
+				+ "	\"diagnosis_time\":\"Texto sobre diagnosis_time\",\r\n"
+				+ "	\"clinical_justification\":\"texto sobre clinical_justification\"\r\n"
+				+ "  },\r\n"
+				+ "  \"hospital_admission\": {\r\n"
+				+ "	  \"uti_reservation\":\"Sim\"\r\n"
+				+ "  }\r\n"
+				+ "}";
+		var usecase = new ExtractVariables();
+		Map<String, Object> varzinha = usecase.execute(template, payload);
+
+		varzinha.forEach((a, b) -> System.out.println("a " + a + ", b " + b));
+		
+		return varzinha;
+	}
     
     private JsonNode replacePlaceholders(JsonNode node, Map<String, Object> variables) {
         if (node.isObject()) {
@@ -57,11 +98,10 @@ public class PdfService {
         } else if (node.isTextual()) {
             String text = node.asText();
             for (Map.Entry<String, Object> entry : variables.entrySet()) {
-                String key = "${" + entry.getKey() + "}";
+                String key = entry.getKey();
                 if (text.contains(key)) {
                     Object value = entry.getValue();
                     if (value instanceof List) {
-                        // converte listas em ArrayNode
                         ArrayNode arrayNode = mapper.createArrayNode();
                         ((List<?>) value).forEach(v -> arrayNode.add(v.toString()));
                         return arrayNode;

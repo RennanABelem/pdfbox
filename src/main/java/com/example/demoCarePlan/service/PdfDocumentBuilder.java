@@ -5,6 +5,7 @@ import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
 
+//Projetada para criar e manipular um documento PDF, adicionar novas páginas e inserir conteúdo de forma controlada.
 public class PdfDocumentBuilder {
 
 	public static final float DEFAULT_MARGIN_LEFT = 40f;

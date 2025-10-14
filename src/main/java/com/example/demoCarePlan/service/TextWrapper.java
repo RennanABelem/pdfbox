@@ -25,7 +25,7 @@ public class TextWrapper {
                         lines.add(line.toString());
                         line = new StringBuilder(w);
                     } else {
-                        // palavra muito longa -> força quebra (tenta cortar)
+                        //  força quebra de linha 
                         String part = forceSplitWord(w, font, fontSize, maxWidth);
                         lines.add(part);
                         String rest = w.substring(part.length());
