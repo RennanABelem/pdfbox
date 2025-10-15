@@ -174,29 +174,16 @@
 			]
 		},
 		{
-			"type": "multi-column",
-			"fields": [
-				{
-					"type": "column",
-					"font": "Helvetica_Bold",
-					"text-value": "Outro(s) TUSS:",
-					"text-type": "left",
-					"axis-x": "0"
-				}
-			]
+			"type": "column",
+			"font": "Helvetica_Bold",
+			"text-type": "left",
+			"text-value": "Outro(s) TUSS:"
 		},
 		{
-			"type": "list",
-			"fields": [
-				{
-					"type": "column",
-					"font": "Helvetica",
-					"axis-x": "0",
-					"list": {
-						"items": "${procedure.additional_packages}"
-					}
-				}
-			]
+			"type": "column",
+			"font": "Helvetica",
+			"text-type": "left",
+			"text-value": "${procedure.additional_packages}"
 		},
 		{
 			"type": "multi-column",
@@ -356,7 +343,8 @@
 			"width": 245,
 			"font": "Helvetica",
 			"font-size": 8,
-			"axis-x": 45
+			"axis-x": 40,
+			"spacing-above":"80"
 		}
 	]
 }

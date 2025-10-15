@@ -1,11 +1,10 @@
-package com.example.demoCarePlan.service.component;
+package com.example.pdfbox.util;
 
+import com.example.pdfbox.service.impl.PdfDocumentBuilder;
+import com.fasterxml.jackson.databind.JsonNode;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
-
-import com.example.demoCarePlan.service.PdfDocumentBuilder;
-import com.fasterxml.jackson.databind.JsonNode;
 
 public class SignatureRenderer {
 
@@ -18,52 +17,49 @@ public class SignatureRenderer {
     }
 
     public void render(JsonNode element) throws Exception {
-    	
         PDPageContentStream cs = builder.getContentStream();
 
-        String text = element.has("text") ? element.get("text").asText() : "";
-        float blockWidth = element.has("width") ? (float) element.get("width").asDouble() : 260f;
-        String fontName = element.has("font") ? element.get("font").asText() : "Helvetica";
-        float fontSize = element.has("font-size") ? (float) element.get("font-size").asDouble() : globalFontSize;
+        String text = element.path("text").asText("");
+        float blockWidth = (float) element.path("width").asDouble(260f);
+        String fontName = element.path("font").asText("Helvetica");
+        float fontSize = (float) element.path("font-size").asDouble(globalFontSize);
+        float startX = (float) element.path("axis-x").asDouble(40f);
 
-        float marginBottom = PdfConstants.BOTTOM_MARGIN;
         float lineHeightAboveBottom = 18f;
         float distanceLineToText = 8f;
         float lineThickness = 0.5f;
-
-        float startX = element.has("axis-x") ? (float) element.get("axis-x").asDouble() : 50f;
+        float marginBottom = PdfDocumentBuilder.MARGIN_BOTTOM;
         float lineY = marginBottom + lineHeightAboveBottom;
 
         builder.ensureSpace(lineHeightAboveBottom + fontSize);
 
-        PDFont font = loadFont(fontName);
-        
+        PDFont font = resolveFont(fontName);
+
         cs.setLineWidth(lineThickness);
         cs.moveTo(startX, lineY);
         cs.lineTo(startX + blockWidth, lineY);
         cs.stroke();
 
+        // Calcula posição do texto abaixo da linha
         float textY = lineY - distanceLineToText - fontSize;
         float textX = startX;
 
+        // Renderiza o texto explicativo
         cs.beginText();
         cs.setFont(font, fontSize);
         cs.newLineAtOffset(textX, textY);
         cs.showText(text);
         cs.endText();
 
-        builder.moveCursorBy(- (lineHeightAboveBottom + fontSize + distanceLineToText));
+        // Move o cursor para evitar sobreposição com conteúdo seguinte
+        builder.moveCursorBy(-(lineHeightAboveBottom + fontSize + distanceLineToText));
     }
-    
-	private PDFont loadFont(String fontName) {
-		PDFont font;
-		if ("Helvetica".equalsIgnoreCase(fontName)) {
-		    font = PDType1Font.HELVETICA;
-		} else if ("Helvetica_Bold".equalsIgnoreCase(fontName)) {
-		    font = PDType1Font.HELVETICA_BOLD;
-		} else {
-		    font = PDType1Font.HELVETICA;
-		}
-		return font;
-	}
+
+    private PDFont resolveFont(String fontName) {
+        return switch (fontName.toLowerCase()) {
+            case "helvetica_bold" -> PDType1Font.HELVETICA_BOLD;
+            case "helvetica" -> PDType1Font.HELVETICA;
+            default -> PDType1Font.HELVETICA;
+        };
+    }
 }

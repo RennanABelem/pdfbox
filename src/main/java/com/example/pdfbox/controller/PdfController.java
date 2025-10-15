@@ -1,21 +1,19 @@
-package com.example.demoCarePlan.controller;
+package com.example.pdfbox.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demoCarePlan.service.PdfService;
+import com.example.pdfbox.service.impl.PdfServiceImpl;
 
 @RestController
 public class PdfController {
 
-	private final PdfService pdfService;
-
-	public PdfController(PdfService pdfService) {
-		this.pdfService = pdfService;
-	}
+	@Autowired
+	private PdfServiceImpl pdfService;
 
 	@PostMapping("/api/pdf")
 	public ResponseEntity<byte[]> fromTemplate() {
