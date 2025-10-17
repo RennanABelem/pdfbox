@@ -40,18 +40,15 @@ public class SignatureRenderer {
         cs.lineTo(startX + blockWidth, lineY);
         cs.stroke();
 
-        // Calcula posição do texto abaixo da linha
         float textY = lineY - distanceLineToText - fontSize;
         float textX = startX;
 
-        // Renderiza o texto explicativo
         cs.beginText();
         cs.setFont(font, fontSize);
         cs.newLineAtOffset(textX, textY);
         cs.showText(text);
         cs.endText();
 
-        // Move o cursor para evitar sobreposição com conteúdo seguinte
         builder.moveCursorBy(-(lineHeightAboveBottom + fontSize + distanceLineToText));
     }
 

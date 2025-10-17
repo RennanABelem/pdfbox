@@ -9,9 +9,6 @@ import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 import java.util.List;
 
-/**
- * Renderiza texto em uma única coluna dentro de um documento PDF.
- */
 public class SingleColumnRenderer {
 
 	private final PdfDocumentBuilder builder;
@@ -22,9 +19,6 @@ public class SingleColumnRenderer {
 		this.defaultFontSize = defaultFontSize;
 	}
 
-	/**
-	 * Renderiza o conteúdo textual de um nó JSON no PDF.
-	 */
 	public void render(JsonNode node) throws Exception {
 		PDFont font = resolveFont(node.path("font").asText("Helvetica"));
 		float fontSize = parseFloatOrDefault(node.path("font-size").asText(null), defaultFontSize);
@@ -47,9 +41,6 @@ public class SingleColumnRenderer {
 		builder.ensureSpace(PdfDocumentBuilder.MARGIN_BOTTOM);
 	}
 
-	/**
-	 * Calcula a posição horizontal do texto com base no eixo X.
-	 */
 	private float calculateXPosition(JsonNode node, float marginLeft) {
 		if (node.has("axis-x") && !node.path("axis-x").asText("").isBlank()) {
 			return marginLeft + parseFloatOrDefault(node.path("axis-x").asText(null), 0f);
@@ -57,9 +48,6 @@ public class SingleColumnRenderer {
 		return marginLeft;
 	}
 
-	/**
-	 * Converte uma string para float, com fallback para valor padrão.
-	 */
 	private float parseFloatOrDefault(String value, float defaultValue) {
 		try {
 			return (value == null || value.isBlank()) ? defaultValue : Float.parseFloat(value);
@@ -68,9 +56,6 @@ public class SingleColumnRenderer {
 		}
 	}
 
-	/**
-	 * Carrega a fonte PDF com base no nome fornecido.
-	 */
 	private PDFont resolveFont(String fontName) {
 		return switch (fontName.toLowerCase()) {
 		case "helvetica_bold" -> PDType1Font.HELVETICA_BOLD;

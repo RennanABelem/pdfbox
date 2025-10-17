@@ -12,7 +12,6 @@ public class TextWrapper {
 		if (text == null || text.isBlank())
 			return lines;
 
-		// Divide o texto em parágrafos por quebra de linha
 		String[] paragraphs = text.split("\\r?\\n");
 
 		for (String para : paragraphs) {

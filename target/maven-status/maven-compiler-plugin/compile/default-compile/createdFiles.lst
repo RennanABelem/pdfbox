@@ -9,5 +9,4 @@ com\example\pdfbox\controller\PdfController.class
 com\example\pdfbox\service\impl\PdfDocumentBuilder.class
 com\example\pdfbox\service\impl\PdfServiceImpl.class
 com\example\pdfbox\service\impl\TextWrapper.class
-com\example\pdfbox\service\PdfService.class
 com\example\pdfbox\service\impl\JsonPdfRenderer.class
