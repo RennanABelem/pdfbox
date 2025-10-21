@@ -45,7 +45,9 @@ public class PdfServiceImpl {
               },
               "requester": {
                 "name": "Dr. João Amoeba",
-                "crm": "CRM 123456"
+                "crm": "CRM 123456",
+                "telefone": "(xx) xxxx-xxxx",
+                "email": "email@exemplo.com"
               },
               "procedure": {
                 "tuss": "12345678",

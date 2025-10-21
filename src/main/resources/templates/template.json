@@ -38,20 +38,6 @@
 			"type": "blank"
 		},
 		{
-			"type": "column",
-			"font": "Helvetica",
-			"text-type": "left",
-			"text-value": "${requester.name}",
-			"axis-x": "305"
-		},
-		{
-			"type": "column",
-			"font": "Helvetica",
-			"text-type": "left",
-			"text-value": "${requester.crm}",
-			"axis-x": "305"
-		},
-		{
 			"type": "blank"
 		},
 		{
@@ -93,7 +79,30 @@
 			]
 		},
 		{
+			"type": "column",
+			"font": "Helvetica_Bold",
+			"text-type": "left",
+			"text-value": "Convênio: SulAmérica"
+		},
+		{
 			"type": "blank"
+		},
+		{
+			"type": "multi-column",
+			"fields": [
+				{
+					"type": "column",
+					"font": "Helvetica_Bold",
+					"text-value": "Caráter de Atendimento:",
+					"axis-x": "0"
+				},
+				{
+					"type": "column",
+					"font": "Helvetica",
+					"text-value": "Eletivo",
+					"axis-x": "118"
+				}
+			]
 		},
 		{
 			"type": "blank"
@@ -102,7 +111,7 @@
 			"type": "column",
 			"font": "Helvetica_Bold",
 			"text-type": "left",
-			"text-value": "PROFISSIONAL SOLICITANTE",
+			"text-value": "Médico Solicitante",
 			"font-size": "12"
 		},
 		{
@@ -142,7 +151,42 @@
 			]
 		},
 		{
-			"type": "blank"
+			"type": "multi-column",
+			"fields": [
+				{
+					"type": "column",
+					"font": "Helvetica_Bold",
+					"text-value": "Telefone:",
+					"text-type": "left",
+					"axis-x": "0"
+				},
+				{
+					"type": "column",
+					"font": "Helvetica",
+					"text-value": "${requester.telefone}",
+					"text-type": "left",
+					"axis-x": "48"
+				}
+			]
+		},
+		{
+			"type": "multi-column",
+			"fields": [
+				{
+					"type": "column",
+					"font": "Helvetica_Bold",
+					"text-value": "e-mail:",
+					"text-type": "left",
+					"axis-x": "0"
+				},
+				{
+					"type": "column",
+					"font": "Helvetica",
+					"text-value": "${requester.email}",
+					"text-type": "left",
+					"axis-x": "35"
+				}
+			]
 		},
 		{
 			"type": "blank"
@@ -160,38 +204,7 @@
 				{
 					"type": "column",
 					"font": "Helvetica_Bold",
-					"text-value": "TUSS Principal:",
-					"text-type": "left",
-					"axis-x": "0"
-				},
-				{
-					"type": "column",
-					"font": "Helvetica",
-					"text-value": "${procedure.tuss}",
-					"text-type": "left",
-					"axis-x": "77"
-				}
-			]
-		},
-		{
-			"type": "column",
-			"font": "Helvetica_Bold",
-			"text-type": "left",
-			"text-value": "Outro(s) TUSS:"
-		},
-		{
-			"type": "column",
-			"font": "Helvetica",
-			"text-type": "left",
-			"text-value": "${procedure.additional_packages}"
-		},
-		{
-			"type": "multi-column",
-			"fields": [
-				{
-					"type": "column",
-					"font": "Helvetica_Bold",
-					"text-value": "Pacote Procedimento:",
+					"text-value": "Regiao de Abordagem Cirúrgica:",
 					"text-type": "left",
 					"axis-x": "0"
 				},
@@ -200,9 +213,59 @@
 					"font": "Helvetica",
 					"text-value": "${procedure.procedure_package}",
 					"text-type": "left",
-					"axis-x": "108"
+					"axis-x": "157"
 				}
 			]
+		},
+		{
+			"type": "multi-column",
+			"fields": [
+				{
+					"type": "column",
+					"font": "Helvetica_Bold",
+					"text-value": "Procedimento TUSS Principal:",
+					"text-type": "left",
+					"axis-x": "0"
+				},
+				{
+					"type": "column",
+					"font": "Helvetica",
+					"text-value": "${procedure.tuss}",
+					"text-type": "left",
+					"axis-x": "146"
+				}
+			]
+		},
+		{
+			"type": "multi-column",
+			"fields": [
+				{
+					"type": "column",
+					"font": "Helvetica_Bold",
+					"text-value": "Nível(is) a ser(em) abordado(s):",
+					"text-type": "left",
+					"axis-x": "0"
+				},
+				{
+					"type": "column",
+					"font": "Helvetica",
+					"text-value": "${procedure.level}",
+					"text-type": "left",
+					"axis-x": "152"
+				}
+			]
+		},
+		{
+			"type": "column",
+			"font": "Helvetica_Bold",
+			"text-type": "left",
+			"text-value": "Outro(s) Procedimentos:"
+		},
+		{
+			"type": "column",
+			"font": "Helvetica",
+			"text-type": "left",
+			"text-value": "${procedure.additional_packages}"
 		},
 		{
 			"type": "multi-column",
@@ -227,23 +290,11 @@
 			"type": "blank"
 		},
 		{
-			"type": "multi-column",
-			"fields": [
-				{
-					"type": "column",
-					"font": "Helvetica_Bold",
-					"text-value": "Internação em UTI:",
-					"text-type": "left",
-					"axis-x": "0"
-				},
-				{
-					"type": "column",
-					"font": "Helvetica",
-					"text-value": "${hospital_admission.uti_reservation}",
-					"text-type": "left",
-					"axis-x": "92"
-				}
-			]
+			"type": "column",
+			"font": "Helvetica_Bold",
+			"text-type": "left",
+			"text-value": "HISTÓRICO CLÍNICO",
+			"font-size": "12"
 		},
 		{
 			"type": "multi-column",
@@ -270,44 +321,6 @@
 				{
 					"type": "column",
 					"font": "Helvetica_Bold",
-					"text-value": "Nível(is) a ser(em) abordado(s):",
-					"text-type": "left",
-					"axis-x": "0"
-				},
-				{
-					"type": "column",
-					"font": "Helvetica",
-					"text-value": "${procedure.level}",
-					"text-type": "left",
-					"axis-x": "152"
-				}
-			]
-		},
-		{
-			"type": "multi-column",
-			"fields": [
-				{
-					"type": "column",
-					"font": "Helvetica_Bold",
-					"text-value": "Região de abordagem cirúrgica:",
-					"text-type": "left",
-					"axis-x": "0"
-				},
-				{
-					"type": "column",
-					"font": "Helvetica",
-					"text-value": "${procedure.surgery_approach}",
-					"text-type": "left",
-					"axis-x": "155"
-				}
-			]
-		},
-		{
-			"type": "multi-column",
-			"fields": [
-				{
-					"type": "column",
-					"font": "Helvetica_Bold",
 					"text-value": "Tempo de diagnóstico:",
 					"text-type": "left",
 					"axis-x": "0"
@@ -315,9 +328,28 @@
 				{
 					"type": "column",
 					"font": "Helvetica",
-					"text-value": "${diagnosis.diagnosis_time}",
+					"text-value": "variavel de tempo de diagnóstico",
 					"text-type": "left",
-					"axis-x": "110"
+					"axis-x": "112"
+				}
+			]
+		},
+		{
+			"type": "multi-column",
+			"fields": [
+				{
+					"type": "column",
+					"font": "Helvetica_Bold",
+					"text-value": "Paciente fez tratamento prévio:",
+					"text-type": "left",
+					"axis-x": "0"
+				},
+				{
+					"type": "column",
+					"font": "Helvetica",
+					"text-value": "Sim/Não",
+					"text-type": "left",
+					"axis-x": "150"
 				}
 			]
 		},
@@ -329,7 +361,7 @@
 			"font": "Helvetica_Bold",
 			"text-type": "left",
 			"font-size": "10",
-			"text-value": "Justificativa:"
+			"text-value": "Justificativa clínica:"
 		},
 		{
 			"type": "column",
@@ -338,13 +370,95 @@
 			"text-value": "${diagnosis.clinical_justification}"
 		},
 		{
+			"type": "blank"
+		},
+		{
+			"type": "multi-column",
+			"fields": [
+				{
+					"type": "column",
+					"font": "Helvetica_Bold",
+					"text-value": "Dias de internação:",
+					"text-type": "left",
+					"axis-x": "0"
+				},
+				{
+					"type": "column",
+					"font": "Helvetica",
+					"text-value": "${procedure.surgery_approach}",
+					"text-type": "left",
+					"axis-x": "94"
+				}
+			]
+		},
+		{
+			"type": "multi-column",
+			"fields": [
+				{
+					"type": "column",
+					"font": "Helvetica_Bold",
+					"text-value": "Reserva de UTI:",
+					"text-type": "left",
+					"axis-x": "0"
+				},
+				{
+					"type": "column",
+					"font": "Helvetica",
+					"text-value": "${hospital_admission.uti_reservation}",
+					"text-type": "left",
+					"axis-x": "80"
+				}
+			]
+		},
+		{
+			"type": "multi-column",
+			"fields": [
+				{
+					"type": "column",
+					"font": "Helvetica_Bold",
+					"text-value": "Reserva de Sangue:",
+					"text-type": "left",
+					"axis-x": "0"
+				},
+				{
+					"type": "column",
+					"font": "Helvetica",
+					"text-value": "${hospital_admission.uti_reservation}",
+					"text-type": "left",
+					"axis-x": "100"
+				}
+			]
+		},
+		{
+			"type": "multi-column",
+			"fields": [
+				{
+					"type": "column",
+					"font": "Helvetica_Bold",
+					"text-value": "Observação:",
+					"text-type": "left",
+					"axis-x": "0"
+				},
+				{
+					"type": "column",
+					"font": "Helvetica",
+					"text-value": "Os OPMEs devem ser enviados em relatório médico",
+					"text-type": "left",
+					"axis-x": "64"
+				}
+			]
+		},
+		{
+			"type": "blank"
+		},
+		{
 			"type": "signature",
 			"text": "Assinatura e carimbo do profissional responsável",
 			"width": 245,
 			"font": "Helvetica",
 			"font-size": 8,
 			"axis-x": 40,
-			"spacing-above":"80"
+			"spacing-above": "80"
 		}
 	]
 }
