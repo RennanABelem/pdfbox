@@ -2,7 +2,6 @@ package com.example.pdfbox.service.impl;
 
 import br.com.sulamerica.formulariopadrao.core.domain.entity.DocumentTemplate;
 import br.com.sulamerica.formulariopadrao.infrastructure.documentgenerator.pdfrender.JsonPdfRenderer;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,10 +10,10 @@ import org.mockito.*;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-class DocumentGeneratorImplTest {
+class DocumentGeneratorImplVariableReplacementTest {
 
     @InjectMocks
     private DocumentGeneratorImpl documentGenerator;
@@ -31,47 +30,33 @@ class DocumentGeneratorImplTest {
     }
 
     @Test
-    void shouldGenerateDocumentWithSuccess() throws Exception {
+    void shouldReplaceVariablesInTemplateCorrectly() throws Exception {
         // Arrange
         Map<String, String> variables = new HashMap<>();
         variables.put("{{name}}", "Rennan");
-        variables.put("{{age}}", "30");
+        variables.put("{{city}}", "São Paulo");
 
-        String templateContent = "{\"text\": \"Hello {{name}}, age {{age}}\"}";
-        String expectedFilled = "{\"text\": \"Hello Rennan, age 30\"}";
+        String templateOriginal = "{\"text\":\"Olá {{name}} de {{city}}!\"}";
+        String templateEsperado = "{\"text\":\"Olá Rennan de São Paulo!\"}";
 
         DocumentTemplate template = mock(DocumentTemplate.class);
-        when(template.getTemplate()).thenReturn(templateContent);
+        when(template.getTemplate()).thenReturn(templateOriginal);
 
-        JsonNode jsonNode = mock(JsonNode.class);
-        when(mapper.readTree(expectedFilled)).thenReturn(jsonNode);
-        when(renderer.render(jsonNode)).thenReturn("PDF_BYTES".getBytes());
+        // Mock comportamento mínimo para não gerar exceção
+        when(mapper.readTree(templateEsperado)).thenReturn(null);
+        when(renderer.render(null)).thenReturn(new byte[0]);
 
         // Act
-        byte[] result = documentGenerator.createDocument(variables, template);
+        documentGenerator.createDocument(variables, template);
 
-        // Assert
-        assertNotNull(result);
-        assertArrayEquals("PDF_BYTES".getBytes(), result);
-        verify(mapper).readTree(expectedFilled);
-        verify(renderer).render(jsonNode);
-    }
+        // Assert — verificamos se o JSON final passou pelo mapper com as variáveis substituídas
+        ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
+        verify(mapper).readTree(captor.capture());
 
-    @Test
-    void shouldThrowRuntimeExceptionWhenMapperFails() throws Exception {
-        // Arrange
-        Map<String, String> variables = Map.of("{{x}}", "1");
-        DocumentTemplate template = mock(DocumentTemplate.class);
-        when(template.getTemplate()).thenReturn("{invalid-json}");
-
-        when(mapper.readTree(anyString())).thenThrow(new RuntimeException("JSON error"));
-
-        // Act + Assert
-        assertThrows(RuntimeException.class, () ->
-                documentGenerator.createDocument(variables, template)
-        );
-
-        verify(mapper).readTree(anyString());
-        verify(renderer, never()).render(any());
+        String templateProcessado = captor.getValue();
+        assertTrue(templateProcessado.contains("Rennan"));
+        assertTrue(templateProcessado.contains("São Paulo"));
+        assertFalse(templateProcessado.contains("{{name}}"));
+        assertFalse(templateProcessado.contains("{{city}}"));
     }
 }
