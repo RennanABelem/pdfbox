@@ -1,10 +1,15 @@
 package com.example.pdfbox.util;
 
-import com.example.pdfbox.service.impl.PdfDocumentBuilder;
-import com.example.pdfbox.service.impl.PdfDrawHelper;
-import com.example.pdfbox.service.impl.TextWrapper;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyFloat;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.mockStatic;
+import static org.mockito.Mockito.when;
+
+import java.util.List;
+
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,9 +18,11 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 
-import java.util.List;
-
-import static org.mockito.Mockito.*;
+import com.example.pdfbox.service.impl.PdfDocumentBuilder;
+import com.example.pdfbox.service.impl.PdfDrawHelper;
+import com.example.pdfbox.service.impl.TextWrapper;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @DisplayName("SingleColumnRenderer")
 class SingleColumnRendererTest {

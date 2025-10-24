@@ -1,17 +1,19 @@
 package com.example.pdfbox.service.impl;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.stereotype.Service;
-
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.stereotype.Service;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 @Service
 public class PdfServiceImpl {
@@ -23,7 +25,12 @@ public class PdfServiceImpl {
         try (InputStream templateStream = new ClassPathResource(resourcePath).getInputStream()) {
             JsonNode templateJson = mapper.readTree(templateStream);
             Map<String, Object> variables = extractVariables(templateJson);
-            JsonNode filledTemplate = replacePlaceholders(templateJson, variables);
+            
+            String templateJJ = templateJson.toString();
+            System.out.println("Tranq   " +templateJJ);
+            JsonNode tree = mapper.readTree(templateJJ);
+            System.out.println("Tranq   2    " +tree);
+            JsonNode filledTemplate = replacePlaceholders(tree, variables);
 
             byte[] pdfBytes = renderer.render(filledTemplate);
             Path outputPath = Paths.get(outputFileName);
@@ -80,14 +87,18 @@ public class PdfServiceImpl {
     }
 
     private JsonNode replacePlaceholders(JsonNode node, Map<String, Object> variables) {
-        if (node.isObject()) {
-            ObjectNode obj = (ObjectNode) node;
-            obj.fieldNames().forEachRemaining(field -> {
-                JsonNode child = obj.get(field);
-                obj.set(field, replacePlaceholders(child, variables));
-            });
-            return obj;
-        }
+    	if (node.isObject()) {
+    	    ObjectNode obj = (ObjectNode) node;
+
+    	    @SuppressWarnings("unchecked")
+			Map<String, Object> map = mapper.convertValue(node, Map.class);
+
+    	    for (String field : map.keySet()) {
+    	        JsonNode child = node.get(field);
+    	        obj.set(field, replacePlaceholders(child, variables));
+    	    }
+    	    return obj;
+    	}
 
         if (node.isArray()) {
             ArrayNode array = (ArrayNode) node;

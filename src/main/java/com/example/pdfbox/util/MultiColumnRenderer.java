@@ -1,14 +1,15 @@
 package com.example.pdfbox.util;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.pdfbox.pdmodel.font.PDFont;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
+
 import com.example.pdfbox.service.impl.PdfDocumentBuilder;
 import com.example.pdfbox.service.impl.PdfDrawHelper;
 import com.example.pdfbox.service.impl.TextWrapper;
 import com.fasterxml.jackson.databind.JsonNode;
-import org.apache.pdfbox.pdmodel.font.PDFont;
-import org.apache.pdfbox.pdmodel.font.PDType1Font;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MultiColumnRenderer {
 

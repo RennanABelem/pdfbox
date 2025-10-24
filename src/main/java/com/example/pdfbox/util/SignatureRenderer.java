@@ -1,10 +1,11 @@
 package com.example.pdfbox.util;
 
-import com.example.pdfbox.service.impl.PdfDocumentBuilder;
-import com.fasterxml.jackson.databind.JsonNode;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
+
+import com.example.pdfbox.service.impl.PdfDocumentBuilder;
+import com.fasterxml.jackson.databind.JsonNode;
 
 public class SignatureRenderer {
 
