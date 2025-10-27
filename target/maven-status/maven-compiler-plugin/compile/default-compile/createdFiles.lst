@@ -1,12 +1,15 @@
 com\example\pdfbox\service\impl\PdfDrawHelper.class
 com\example\pdfbox\util\SingleColumnRenderer.class
+com\example\pdfbox\exception\CloseStreamException.class
 com\example\pdfbox\util\SignatureRenderer.class
 com\example\pdfbox\DemoCarePlanApplication.class
 com\example\pdfbox\util\MultiColumnRenderer.class
 com\example\pdfbox\service\impl\PdfDrawHelper$Alignment.class
 com\example\pdfbox\service\impl\ExtractVariables.class
 com\example\pdfbox\controller\PdfController.class
+com\example\pdfbox\dto\EventMessage.class
 com\example\pdfbox\service\impl\PdfDocumentBuilder.class
 com\example\pdfbox\service\impl\PdfServiceImpl.class
 com\example\pdfbox\service\impl\TextWrapper.class
+com\example\pdfbox\dto\DocumentTemplate.class
 com\example\pdfbox\service\impl\JsonPdfRenderer.class

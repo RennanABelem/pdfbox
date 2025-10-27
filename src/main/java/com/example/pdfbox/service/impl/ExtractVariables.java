@@ -47,6 +47,7 @@ public class ExtractVariables {
 			} else {
 				resolved.put(variable, "");
 			}
+			
 		}
 
 		return resolved;

@@ -1,5 +1,8 @@
 C:\Users\renna\Downloads\demoCarePlan\demoCarePlan\src\main\java\com\example\pdfbox\controller\PdfController.java
 C:\Users\renna\Downloads\demoCarePlan\demoCarePlan\src\main\java\com\example\pdfbox\DemoCarePlanApplication.java
+C:\Users\renna\Downloads\demoCarePlan\demoCarePlan\src\main\java\com\example\pdfbox\dto\DocumentTemplate.java
+C:\Users\renna\Downloads\demoCarePlan\demoCarePlan\src\main\java\com\example\pdfbox\dto\EventMessage.java
+C:\Users\renna\Downloads\demoCarePlan\demoCarePlan\src\main\java\com\example\pdfbox\exception\CloseStreamException.java
 C:\Users\renna\Downloads\demoCarePlan\demoCarePlan\src\main\java\com\example\pdfbox\service\impl\ExtractVariables.java
 C:\Users\renna\Downloads\demoCarePlan\demoCarePlan\src\main\java\com\example\pdfbox\service\impl\JsonPdfRenderer.java
 C:\Users\renna\Downloads\demoCarePlan\demoCarePlan\src\main\java\com\example\pdfbox\service\impl\PdfDocumentBuilder.java

@@ -1,9 +1,13 @@
 package com.example.pdfbox.service.impl;
 
+import java.io.IOException;
+
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
+
+import com.example.pdfbox.exception.CloseStreamException;
 
 
 public class PdfDocumentBuilder {
@@ -71,12 +75,16 @@ public class PdfDocumentBuilder {
         cursorY = currentPage.getMediaBox().getHeight() - MARGIN_TOP;
     }
 
-    private void closeContentStreamIfOpen() {
+    private void closeContentStreamIfOpen() throws IOException {
         if (contentStream != null) {
             try {
                 contentStream.close();
-            } catch (Exception ignored) {
+            } catch (IOException e) {
+                throw new CloseStreamException("Erro ao fechar o ContentStream");
+            } finally {
+                contentStream = null;
             }
         }
     }
+
 }

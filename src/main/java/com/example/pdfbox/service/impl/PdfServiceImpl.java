@@ -25,12 +25,7 @@ public class PdfServiceImpl {
         try (InputStream templateStream = new ClassPathResource(resourcePath).getInputStream()) {
             JsonNode templateJson = mapper.readTree(templateStream);
             Map<String, Object> variables = extractVariables(templateJson);
-            
-            String templateJJ = templateJson.toString();
-            System.out.println("Tranq   " +templateJJ);
-            JsonNode tree = mapper.readTree(templateJJ);
-            System.out.println("Tranq   2    " +tree);
-            JsonNode filledTemplate = replacePlaceholders(tree, variables);
+            JsonNode filledTemplate = replacePlaceholders(templateJson, variables);
 
             byte[] pdfBytes = renderer.render(filledTemplate);
             Path outputPath = Paths.get(outputFileName);
@@ -52,9 +47,7 @@ public class PdfServiceImpl {
               },
               "requester": {
                 "name": "Dr. João Amoeba",
-                "crm": "CRM 123456",
-                "telefone": "(xx) xxxx-xxxx",
-                "email": "email@exemplo.com"
+                "crm": "CRM 123456"
               },
               "procedure": {
                 "tuss": "12345678",
@@ -87,18 +80,14 @@ public class PdfServiceImpl {
     }
 
     private JsonNode replacePlaceholders(JsonNode node, Map<String, Object> variables) {
-    	if (node.isObject()) {
-    	    ObjectNode obj = (ObjectNode) node;
-
-    	    @SuppressWarnings("unchecked")
-			Map<String, Object> map = mapper.convertValue(node, Map.class);
-
-    	    for (String field : map.keySet()) {
-    	        JsonNode child = node.get(field);
-    	        obj.set(field, replacePlaceholders(child, variables));
-    	    }
-    	    return obj;
-    	}
+        if (node.isObject()) {
+            ObjectNode obj = (ObjectNode) node;
+            obj.fieldNames().forEachRemaining(field -> {
+                JsonNode child = obj.get(field);
+                obj.set(field, replacePlaceholders(child, variables));
+            });
+            return obj;
+        }
 
         if (node.isArray()) {
             ArrayNode array = (ArrayNode) node;
