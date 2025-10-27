@@ -14,6 +14,7 @@ com\example\pdfbox\util\SingleColumnRendererTest$TextRendering.class
 com\example\pdfbox\service\impl\PdfServiceImplTest$GenerateFromTemplateTests.class
 com\example\pdfbox\util\MultiColumnRendererTest$BasicRendering.class
 com\example\pdfbox\service\impl\PdfServiceImplTest.class
+com\example\pdfbox\service\impl\FontResolverTest.class
 com\example\pdfbox\service\impl\PdfDrawHelperTest$AlignmentTests.class
 com\example\pdfbox\util\MultiColumnRendererTest.class
 com\example\pdfbox\util\SignatureRendererTest.class

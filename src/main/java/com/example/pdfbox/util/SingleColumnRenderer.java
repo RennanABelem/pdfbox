@@ -3,8 +3,8 @@ package com.example.pdfbox.util;
 import java.util.List;
 
 import org.apache.pdfbox.pdmodel.font.PDFont;
-import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
+import com.example.pdfbox.service.impl.FontResolver;
 import com.example.pdfbox.service.impl.PdfDocumentBuilder;
 import com.example.pdfbox.service.impl.PdfDrawHelper;
 import com.example.pdfbox.service.impl.TextWrapper;
@@ -21,7 +21,7 @@ public class SingleColumnRenderer {
 	}
 
 	public void render(JsonNode node) throws Exception {
-		PDFont font = resolveFont(node.path("font").asText("Helvetica"));
+		PDFont font = FontResolver.resolve(node.path("font").asText("Helvetica"));
 		float fontSize = parseFloatOrDefault(node.path("font-size").asText(null), defaultFontSize);
 
 		float usableWidth = builder.getUsableWidth();
@@ -57,11 +57,4 @@ public class SingleColumnRenderer {
 		}
 	}
 
-	private PDFont resolveFont(String fontName) {
-		return switch (fontName.toLowerCase()) {
-		case "helvetica_bold" -> PDType1Font.HELVETICA_BOLD;
-		case "helvetica" -> PDType1Font.HELVETICA;
-		default -> PDType1Font.HELVETICA;
-		};
-	}
 }

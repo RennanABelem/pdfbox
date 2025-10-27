@@ -12,4 +12,5 @@ com\example\pdfbox\service\impl\PdfDocumentBuilder.class
 com\example\pdfbox\service\impl\PdfServiceImpl.class
 com\example\pdfbox\service\impl\TextWrapper.class
 com\example\pdfbox\dto\DocumentTemplate.class
+com\example\pdfbox\service\impl\FontResolver.class
 com\example\pdfbox\service\impl\JsonPdfRenderer.class

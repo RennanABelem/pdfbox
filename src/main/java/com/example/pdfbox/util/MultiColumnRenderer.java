@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.pdfbox.pdmodel.font.PDFont;
-import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
+import com.example.pdfbox.service.impl.FontResolver;
 import com.example.pdfbox.service.impl.PdfDocumentBuilder;
 import com.example.pdfbox.service.impl.PdfDrawHelper;
 import com.example.pdfbox.service.impl.TextWrapper;
@@ -52,7 +52,8 @@ public class MultiColumnRenderer {
                 continue;
             }
 
-            PDFont font = resolveFont(field.path("font").asText("Helvetica"));
+            
+            PDFont font = FontResolver.resolve(field.path("font").asText("Helvetica"));
             float fontSize = parseFloatOrDefault(field.path("font-size").asText(null), defaultFontSize);
 
             float x = calculateXPosition(field, marginLeft, i, colWidth);
@@ -116,14 +117,6 @@ public class MultiColumnRenderer {
             return usableWidth - (x - marginLeft);
         }
         return colWidth - 4f;
-    }
-
-    private PDFont resolveFont(String fontName) {
-        return switch (fontName.toLowerCase()) {
-            case "helvetica_bold" -> PDType1Font.HELVETICA_BOLD;
-            case "helvetica" -> PDType1Font.HELVETICA;
-            default -> PDType1Font.HELVETICA;
-        };
     }
 
     private float parseFloatOrDefault(String value, float defaultValue) {

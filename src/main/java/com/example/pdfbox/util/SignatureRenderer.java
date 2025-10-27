@@ -2,8 +2,8 @@ package com.example.pdfbox.util;
 
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDFont;
-import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
+import com.example.pdfbox.service.impl.FontResolver;
 import com.example.pdfbox.service.impl.PdfDocumentBuilder;
 import com.fasterxml.jackson.databind.JsonNode;
 
@@ -34,7 +34,7 @@ public class SignatureRenderer {
 
         builder.ensureSpace(lineHeightAboveBottom + fontSize);
 
-        PDFont font = resolveFont(fontName);
+        PDFont font = FontResolver.resolve(fontName);
 
         cs.setLineWidth(lineThickness);
         cs.moveTo(startX, lineY);
@@ -53,11 +53,4 @@ public class SignatureRenderer {
         builder.moveCursorBy(-(lineHeightAboveBottom + fontSize + distanceLineToText));
     }
 
-    private PDFont resolveFont(String fontName) {
-        return switch (fontName.toLowerCase()) {
-            case "helvetica_bold" -> PDType1Font.HELVETICA_BOLD;
-            case "helvetica" -> PDType1Font.HELVETICA;
-            default -> PDType1Font.HELVETICA;
-        };
-    }
 }
