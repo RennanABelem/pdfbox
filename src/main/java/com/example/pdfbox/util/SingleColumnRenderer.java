@@ -14,6 +14,7 @@ public class SingleColumnRenderer {
 
 	private final PdfDocumentBuilder builder;
 	private final float defaultFontSize;
+	
 
 	public SingleColumnRenderer(PdfDocumentBuilder builder, float defaultFontSize) {
 		this.builder = builder;

@@ -34,6 +34,7 @@ public class ExtractVariables {
 			String path = variable.substring(2, variable.length() - 1);
 			JsonElement value = navigateJsonPath(root, path);
 
+
 			if (value == null || value.isJsonNull()) {
 				resolved.put(variable, "");
 			} else if (value.isJsonArray()) {
@@ -47,7 +48,7 @@ public class ExtractVariables {
 			} else {
 				resolved.put(variable, "");
 			}
-			
+
 		}
 
 		return resolved;
@@ -58,7 +59,7 @@ public class ExtractVariables {
 		JsonElement current = root;
 
 		for (String level : levels) {
-			if (current == null || !current.isJsonObject()) {	
+			if (current == null || !current.isJsonObject()) {
 				return null;
 			}
 

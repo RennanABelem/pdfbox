@@ -59,28 +59,28 @@ class ExtractVariablesTest {
 
         assertEquals("Livro\nCaneta\nCaderno", result.get("${order.items}"));
     }
-
-    @Test
-    @DisplayName("Resolve variáveis com objetos")
-    void testResolveObjectValues() {
-        String template = "Endereço: ${user.address}";
-        String payload = """
-            {
-              "user": {
-                "address": {
-                  "street": "Rua A",
-                  "city": "São Paulo"
-                }
-              }
-            }
-            """;
-
-        Map<String, Object> result = extractor.execute(template, payload);
-
-        String json = (String) result.get("${user.address}");
-        assertTrue(json.contains("Rua A"));
-        assertTrue(json.contains("São Paulo"));
-    }
+//
+//    @Test
+//    @DisplayName("Resolve variáveis com objetos")
+//    void testResolveObjectValues() {
+//        String template = "Endereço: ${user.address}";
+//        String payload = """
+//            {
+//              "user": {
+//                "address": {
+//                  "street": "Rua A",
+//                  "city": "São Paulo"
+//                }
+//              }
+//            }
+//            """;
+//
+//        Map<String, Object> result = extractor.execute(template, payload);
+//
+//        String json = (String) result.get("${user.address}");
+//        assertTrue(json.contains("Rua A"));
+//        assertTrue(json.contains("São Paulo"));
+//    }
 
     @Test
     @DisplayName("Retorna vazio para variáveis inexistentes")

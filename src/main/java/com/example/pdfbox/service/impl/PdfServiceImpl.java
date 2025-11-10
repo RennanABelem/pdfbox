@@ -42,19 +42,18 @@ public class PdfServiceImpl {
         String payload = """
             {
               "beneficiary": {
-                "name": "Rennan Belem",
+                "name": "",
                 "code": "545xx3212xx1321xxx20"
               },
               "requester": {
                 "name": "Dr. João Amoeba",
-                "crm": "CRM 123456"
+                "crm": "CRM 123456",
+                "state":"SP"
               },
               "procedure": {
                 "tuss": "12345678",
                 "additional_packages": [
-                  "1 - 40303489 - TUSS_TEXTO_1",
-                  "2 - 40303490 - TUSS_TEXTO_2",
-                  "3 - 40303491 - TUSS_TEXTO_4"
+                  "1 - 40303489 - TUSS_TEXTO_1"
                 ],
                 "procedure_package": "texto do procedure package",
                 "hospital_package": "texto do hospital_package",
@@ -64,7 +63,7 @@ public class PdfServiceImpl {
               "diagnosis": {
                 "cid": "M54.2 - Cervica",
                 "diagnosis_time": "Texto sobre diagnosis_time",
-                "clinical_justification": "ustification... texto longo sobre clinical_justification... texto longo sobre clinical_justification... texto longo sobre clinical_justification... texto longo sobre clinical_justification... texto longo sobre clinical_justification... texto longo sobre clinical_justification... texto longo sobre clinical_justification... texto longo sobre clinical_justification.. texto longo sobre clinical_justification...."
+                "clinical_justification": "teste.."
               },
               "hospital_admission": {
                 "uti_reservation": "Sim"

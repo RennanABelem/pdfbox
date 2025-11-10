@@ -147,6 +147,13 @@
 					"text-value": "${requester.crm}",
 					"text-type": "left",
 					"axis-x": "50"
+				},
+				{
+					"type": "column",
+					"font": "Helvetica",
+					"text-value": "/ ${requester.state}",
+					"text-type": "left",
+					"axis-x": "130"
 				}
 			]
 		},

@@ -11,6 +11,7 @@ public class SignatureRenderer {
 
     private final PdfDocumentBuilder builder;
     private final float globalFontSize;
+    private static final float FIXED_VERTICAL_SPACING = 20f;
 
     public SignatureRenderer(PdfDocumentBuilder builder, float globalFontSize) {
         this.builder = builder;
